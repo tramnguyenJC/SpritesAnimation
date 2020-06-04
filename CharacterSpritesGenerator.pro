@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     brushes/brush.cpp \
+    brushes/eraser.cpp \
     brushes/pencil.cpp \
     components/custom_color_dialog.cpp \
     components/paint_area.cpp \
@@ -24,6 +25,7 @@ SOURCES += \
     controllers/sprites_editor_menubar_controller.cpp \
     controllers/sprites_editor_toolbar_controller.cpp \
     controllers/sprites_editor_window_controller.cpp \
+    layouts/brushes_sidebar.cpp \
     layouts/color_picker_widget.cpp \
     layouts/sprites_editor_menubar.cpp \
     layouts/sprites_editor_toolbar.cpp \
@@ -33,6 +35,7 @@ SOURCES += \
 HEADERS += \
     brushes/brush.h \
     brushes/brush_factory.h \
+    brushes/eraser.h \
     brushes/pencil.h \
     components/custom_color_dialog.h \
     components/paint_area.h \
@@ -40,6 +43,7 @@ HEADERS += \
     controllers/sprites_editor_menubar_controller.h \
     controllers/sprites_editor_toolbar_controller.h \
     controllers/sprites_editor_window_controller.h \
+    layouts/brushes_sidebar.h \
     layouts/color_picker_widget.h \
     layouts/sprites_editor_menubar.h \
     layouts/sprites_editor_toolbar.h \

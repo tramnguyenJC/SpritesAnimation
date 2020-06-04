@@ -7,6 +7,7 @@ SpritesEditorWindow::SpritesEditorWindow(QWidget *parent)
     : QMainWindow(parent),
       scroll_area_(new QScrollArea)
 {
+    // Setting up controllers should precede other components
     setupControllers();
     setupScrollArea();
     setupColorPickerWidget();
@@ -38,9 +39,6 @@ void SpritesEditorWindow::setupControllers() {
 void SpritesEditorWindow::setupScrollArea() {
     scroll_area_->setBackgroundRole(QPalette::Dark);
     scroll_area_->setWidget(window_controller_->getPaintArea());
-//    QPalette pal = scroll_area_->palette();
-//    pal.setColor(scroll_area_->backgroundRole(), QColor(230,230,230));
-//    scroll_area_->setPalette(pal);
 }
 
 void SpritesEditorWindow::setupColorPickerWidget() {

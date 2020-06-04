@@ -23,13 +23,18 @@ public:
     inline void setBrushColor(const QColor &brush_color) {
         brush_color_ = brush_color;
     }
+    inline QColor getBrushColor() const { return brush_color_;}
+
     inline void setBrushWidth(int width) {
         thickness_ = width;
     }
+    inline int getBrushWidth() const { return thickness_;}
+
     inline void setBrush(Brush *brush, const QString &brush_name) {
         this->brush_ = brush;
         this->brush_name_ = brush_name;
     }
+    inline Brush* getBrush() const { return brush_;}
 
     inline QImage image() const { return image_; }
     inline QColor brushColor() const { return brush_color_; }

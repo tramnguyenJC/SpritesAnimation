@@ -9,10 +9,11 @@
 
 #include "brush_factory.h"
 
-class QPainter;
-class QPoint;
-class QRect;
-class QString;
+#include <QBrush>
+#include <QPainter>
+#include <QPoint>
+#include <QRect>
+#include <QString>
 
 class Brush : public QObject
 {
