@@ -1,0 +1,41 @@
+QToolButton
+{
+    background-color: transparent;
+    border: 0.1ex solid #BAB9B8;
+    border-radius: 0.2ex;
+    margin: 0.3ex;
+    padding: 0.0ex;
+}
+
+QToolButton:hover,
+QToolButton::menu-button:hover
+{
+    background-color: transparent;
+    border: 0.1ex solid #6e6e6e;
+}
+
+QToolButton:checked,
+QToolButton:pressed,
+QToolButton::menu-button:pressed
+{
+    background-color: #6e6e6e;
+    border: 0.1ex solid #6e6e6e;
+    padding: 0.0ex;
+}
+
+QToolButton::menu-button
+{
+    border: 0.1ex solid #BAB9B8;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    /* 1ex width + 0.4ex for border + no text = 2ex allocated above */
+    width: 1ex;
+    padding: 0.5ex;
+    outline: none;
+}
+
+QToolButton::menu-arrow:open
+{
+    border: 0.1ex solid #BAB9B8;
+}
+
