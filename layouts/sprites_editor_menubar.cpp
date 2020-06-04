@@ -1,4 +1,4 @@
-#include "sprites_editor_menu_bar.h"
+#include "sprites_editor_menubar.h"
 #include "brushes/brush.h"
 
 #include <QActionGroup>
@@ -7,12 +7,10 @@
 #include <QPointer>
 
 SpritesEditorMenuBar::SpritesEditorMenuBar(
-        QWidget* parent, SpritesEditorWindowController* window_controller)
+        QWidget* parent, SpritesEditorMenuBarController* menu_bar_controller)
     : QMenuBar(parent),
-      window_controller_(window_controller)
+      menu_bar_controller_(menu_bar_controller)
 {
-    menu_bar_controller_ = new SpritesEditorMenuBarController(
-                this, window_controller_);
 }
 
 void SpritesEditorMenuBar::initialize() {

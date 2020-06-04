@@ -1,7 +1,8 @@
 #include "sprites_editor_window_controller.h"
 
-SpritesEditorWindowController::SpritesEditorWindowController()
-    : paint_area_(new PaintArea) {}
+SpritesEditorWindowController::SpritesEditorWindowController(QWidget* parent)
+    : QObject(parent),
+      paint_area_(new PaintArea) {}
 
 void SpritesEditorWindowController::resizePaintArea(int width, int height) {
     int image_width = paint_area_->sizeHint().width();

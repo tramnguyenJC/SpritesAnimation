@@ -3,11 +3,11 @@
 #include <QToolButton>
 
 SpritesEditorToolbar::SpritesEditorToolbar(
-        QWidget* parent, SpritesEditorWindowController* window_controller)
+        QWidget* parent, SpritesEditorToolbarController* toolbar_controller)
     : QToolBar(parent),
-     window_controller_(window_controller)
+     toolbar_controller_(toolbar_controller)
 {
-    this->setAllowedAreas(Qt::AllToolBarAreas);
+    this->setAllowedAreas(Qt::NoToolBarArea);
     const QIcon newIcon = QIcon::fromTheme("document-new",
                                            QIcon(":/images/icons/brush.png"));
     QToolButton *button = new QToolButton;

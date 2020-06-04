@@ -5,20 +5,20 @@
 #include <QToolBar>
 
 #include "brushes/brush.h"
-#include "controllers/sprites_editor_window_controller.h"
+#include "controllers/sprites_editor_toolbar_controller.h"
 
 class SpritesEditorToolbar : public QToolBar {
     Q_OBJECT
 public:
     SpritesEditorToolbar(QWidget* parent,
-                         SpritesEditorWindowController* window_controller);
+                         SpritesEditorToolbarController* toolbar_controller);
 
 private slots:
     void brush();
 
 private:
     QButtonGroup* button_group_;
-    SpritesEditorWindowController* window_controller_;
+    SpritesEditorToolbarController* toolbar_controller_;
 
 };
 

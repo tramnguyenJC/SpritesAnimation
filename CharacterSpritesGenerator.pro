@@ -18,26 +18,32 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     brushes/brush.cpp \
     brushes/pencil.cpp \
-    color_picker.cpp \
-    controllers/sprites_editor_menu_bar_controller.cpp \
+    components/custom_color_dialog.cpp \
+    components/paint_area.cpp \
+    controllers/color_picker_widget_controller.cpp \
+    controllers/sprites_editor_menubar_controller.cpp \
+    controllers/sprites_editor_toolbar_controller.cpp \
     controllers/sprites_editor_window_controller.cpp \
-    layouts/sprites_editor_menu_bar.cpp \
+    layouts/color_picker_widget.cpp \
+    layouts/sprites_editor_menubar.cpp \
     layouts/sprites_editor_toolbar.cpp \
     layouts/sprites_editor_window.cpp \
-    main.cpp \
-    paint_area.cpp
+    main.cpp
 
 HEADERS += \
     brushes/brush.h \
     brushes/brush_factory.h \
     brushes/pencil.h \
-    color_picker.h \
-    controllers/sprites_editor_menu_bar_controller.h \
+    components/custom_color_dialog.h \
+    components/paint_area.h \
+    controllers/color_picker_widget_controller.h \
+    controllers/sprites_editor_menubar_controller.h \
+    controllers/sprites_editor_toolbar_controller.h \
     controllers/sprites_editor_window_controller.h \
-    layouts/sprites_editor_menu_bar.h \
+    layouts/color_picker_widget.h \
+    layouts/sprites_editor_menubar.h \
     layouts/sprites_editor_toolbar.h \
-    layouts/sprites_editor_window.h \
-    paint_area.h \
+    layouts/sprites_editor_window.h
 
 FORMS +=
 

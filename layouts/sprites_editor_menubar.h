@@ -1,8 +1,7 @@
 #ifndef SPRITES_EDITOR_MENU_BAR_H
 #define SPRITES_EDITOR_MENU_BAR_H
 
-#include "controllers/sprites_editor_window_controller.h"
-#include "controllers/sprites_editor_menu_bar_controller.h"
+#include "controllers/sprites_editor_menubar_controller.h"
 
 #include <QMenu>
 #include <QMenuBar>
@@ -12,7 +11,7 @@ class SpritesEditorMenuBar : public QMenuBar {
     Q_OBJECT
 public:
     SpritesEditorMenuBar(QWidget* parent,
-                         SpritesEditorWindowController* window_controller);
+                         SpritesEditorMenuBarController* menu_bar_controller);
     void initialize();
     ~SpritesEditorMenuBar();
 
@@ -36,7 +35,6 @@ private:
     void loadBrushes();
     void loadBrush(QString brush_name);
 
-    SpritesEditorWindowController* window_controller_ = nullptr;
     SpritesEditorMenuBarController* menu_bar_controller_ = nullptr;
     QMenu *file_menu_ = nullptr;
     QMenu *brush_menu_ = nullptr;

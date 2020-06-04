@@ -1,4 +1,4 @@
-#include "controllers/sprites_editor_menu_bar_controller.h"
+#include "controllers/sprites_editor_menubar_controller.h"
 
 #include <QAction>
 #include <QApplication>
