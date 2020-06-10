@@ -4,6 +4,8 @@
 #include <QFile>
 #include <QTextStream>
 
+
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
@@ -15,5 +17,6 @@ int main(int argc, char *argv[])
 
     SpritesEditorWindow spritesEditorWindow;
     spritesEditorWindow.showMaximized();
+
     return app.exec();
 }

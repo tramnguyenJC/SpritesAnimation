@@ -2,5 +2,19 @@
     <qresource prefix="/">
         <file>images/icons/new.png</file>
         <file>images/icons/brush.png</file>
+        <file>images/brushpatterns/fluffy_watercolor.png</file>
+        <file>images/brushpatterns/leaf.png</file>
+        <file>images/brushpatterns/basket_hatching_brush.png</file>
+        <file>images/brushpatterns/flat_brush.png</file>
+        <file>images/brushpatterns/flat_brush_dry.png</file>
+        <file>images/brushpatterns/flat_brush_wet.png</file>
+        <file>images/brushpatterns/oil_paint.png</file>
+        <file>images/brushpatterns/watercolor.png</file>
+        <file>images/brushpatterns/fluffy_watercolor_2.png</file>
+        <file>images/brushpatterns/acrylic_wet.png</file>
+        <file>images/brushpatterns/oil_pastel.png</file>
+        <file>images/brushpatterns/acrylic.png</file>
+        <file>images/brushpatterns/airbrush.png</file>
+        <file>images/brushpatterns/splatter.png</file>
     </qresource>
 </RCC>

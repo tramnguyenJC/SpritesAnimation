@@ -17,16 +17,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     brushes/brush.cpp \
+    brushes/brush_collection.cpp \
     brushes/eraser.cpp \
     brushes/pencil.cpp \
+    brushes/texture_brush.cpp \
     components/custom_color_dialog.cpp \
     components/paint_area.cpp \
+    controllers/brushes_menu_controller.cpp \
     controllers/color_picker_widget_controller.cpp \
     controllers/sprites_editor_menubar_controller.cpp \
     controllers/sprites_editor_toolbar_controller.cpp \
     controllers/sprites_editor_window_controller.cpp \
-    layouts/brushes_sidebar.cpp \
+    layouts/brush_list_panel.cpp \
+    layouts/brushes_menu.cpp \
     layouts/color_picker_widget.cpp \
+    layouts/custom_layouts.cpp \
     layouts/sprites_editor_menubar.cpp \
     layouts/sprites_editor_toolbar.cpp \
     layouts/sprites_editor_window.cpp \
@@ -34,17 +39,21 @@ SOURCES += \
 
 HEADERS += \
     brushes/brush.h \
-    brushes/brush_factory.h \
+    brushes/brush_collection.h \
     brushes/eraser.h \
     brushes/pencil.h \
+    brushes/texture_brush.h \
     components/custom_color_dialog.h \
     components/paint_area.h \
+    controllers/brushes_menu_controller.h \
     controllers/color_picker_widget_controller.h \
     controllers/sprites_editor_menubar_controller.h \
     controllers/sprites_editor_toolbar_controller.h \
     controllers/sprites_editor_window_controller.h \
-    layouts/brushes_sidebar.h \
+    layouts/brush_list_panel.h \
+    layouts/brushes_menu.h \
     layouts/color_picker_widget.h \
+    layouts/custom_layouts.h \
     layouts/sprites_editor_menubar.h \
     layouts/sprites_editor_toolbar.h \
     layouts/sprites_editor_window.h

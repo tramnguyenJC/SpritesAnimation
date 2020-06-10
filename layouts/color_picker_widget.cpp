@@ -6,7 +6,6 @@ ColorPickerWidget::ColorPickerWidget(
       color_picker_controller_(color_picker_controller),
       color_label_(new QLabel()),
       text_label_(new QLabel()),
-      main_layout_(new QVBoxLayout),
       color_dialog_(new CustomColorDialog())
 {
     setupLabels();
@@ -30,19 +29,16 @@ void ColorPickerWidget::setupLabels() {
 
 void ColorPickerWidget::addLabelsToLayout() {
     QWidget* labels_widget = new QWidget;
-    QHBoxLayout* horizontal_layout = new QHBoxLayout;
+    QHBoxLayout* horizontal_layout = new QHBoxLayout();
     horizontal_layout->addWidget(color_label_);
     horizontal_layout->addWidget(text_label_);
     labels_widget->setLayout(horizontal_layout);
-    main_layout_->addWidget(labels_widget);
-    main_layout_->setAlignment(labels_widget, Qt::AlignHCenter);
+    main_layout_->addWidget(labels_widget, Qt::AlignHCenter);
 }
 
 void ColorPickerWidget::setupLayout() {
-    main_layout_->setMargin(0);
-    main_layout_->setSpacing(0);
-    main_layout_->addWidget(color_dialog_);
-    main_layout_->setAlignment(color_dialog_, Qt::AlignHCenter);
+    main_layout_ = CustomLayouts::createQVBoxLayout();
+    main_layout_->addWidget(color_dialog_, Qt::AlignHCenter);
     addLabelsToLayout();
     this->setLayout(main_layout_);
 }

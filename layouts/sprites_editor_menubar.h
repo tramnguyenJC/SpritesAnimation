@@ -1,6 +1,7 @@
 #ifndef SPRITES_EDITOR_MENU_BAR_H
 #define SPRITES_EDITOR_MENU_BAR_H
 
+#include "brushes/brush.h"
 #include "controllers/sprites_editor_menubar_controller.h"
 
 #include <QMenu>
@@ -33,7 +34,8 @@ private:
     void createViewMenu();
     void createHelpMenu();
     void loadBrushes();
-    void loadBrush(QString brush_name);
+    void loadBrush(Brush* brush);
+    void triggerDefaultBrush();
 
     SpritesEditorMenuBarController* menu_bar_controller_ = nullptr;
     QMenu *file_menu_ = nullptr;

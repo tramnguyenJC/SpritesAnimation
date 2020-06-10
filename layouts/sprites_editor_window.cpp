@@ -11,6 +11,7 @@ SpritesEditorWindow::SpritesEditorWindow(QWidget *parent)
     setupControllers();
     setupScrollArea();
     setupColorPickerWidget();
+    setupBrushesMenu();
     setupToolbar();
     setupMenuBar();
     setupMainWidget();
@@ -34,6 +35,8 @@ void SpritesEditorWindow::setupControllers() {
     toolbar_controller_ = new SpritesEditorToolbarController(this);
     color_picker_controller_ = new ColorPickerWidgetController(
                 this, window_controller_->getPaintArea());
+    brushes_menu_controller_ = new BrushesMenuController(this,
+                        window_controller_->getPaintArea());
 }
 
 void SpritesEditorWindow::setupScrollArea() {
@@ -44,6 +47,10 @@ void SpritesEditorWindow::setupScrollArea() {
 void SpritesEditorWindow::setupColorPickerWidget() {
     color_picker_widget_ = new ColorPickerWidget(this,
                                                  color_picker_controller_);
+}
+
+void SpritesEditorWindow::setupBrushesMenu() {
+    brushes_menu_ = new BrushesMenu(this, brushes_menu_controller_);
 }
 
 void SpritesEditorWindow::setupMenuBar() {
@@ -62,37 +69,40 @@ void SpritesEditorWindow::setupMainWidget() {
 }
 
 void SpritesEditorWindow::setupMainLayout() {
-
-    QGroupBox* horizontalGroupBox = new QGroupBox();
-    QHBoxLayout *hLayout = createQHBoxLayout();
-    hLayout->addWidget(color_picker_widget_);
-    hLayout->addWidget(scroll_area_);
-    horizontalGroupBox->setLayout(hLayout);
-
-    main_layout_ = createQVBoxLayout();
+    main_layout_ = CustomLayouts::createQHBoxLayout();
     main_layout_->setMenuBar(menubar_);
-    main_layout_->addWidget(horizontalGroupBox);
+    main_layout_->addWidget(createLeftPanel());
+    main_layout_->addWidget(createMiddlePanel());
+    main_layout_->addWidget(createRightPanel());
     main_widget_->setLayout(main_layout_);
-    //    widget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    //    QSplitter *splitter = new QSplitter(parent);
-    //      QListView *listview = new QListView;
-    //      QTreeView *treeview = new QTreeView;
-    //      QTextEdit *textedit = new QTextEdit;
-    //      splitter->addWidget(listview);
-    //      splitter->addWidget(treeview);
-    //      splitter->addWidget(textedit);
 }
 
-QVBoxLayout* SpritesEditorWindow::createQVBoxLayout() {
-    QVBoxLayout* layout = new QVBoxLayout;
-    layout->setMargin(0);
-    layout->setSpacing(0);
-    return layout;
+QGroupBox* SpritesEditorWindow::createLeftPanel() {
+    QGroupBox* left_panel = new QGroupBox();
+    CustomLayouts::setupSizePolicyHorizontal(left_panel, 1);
+    CustomLayouts::setupSizePolicyVertical(color_picker_widget_, 1);
+    CustomLayouts::setupSizePolicyVertical(brushes_menu_, 2);
+    QVBoxLayout *layout = CustomLayouts::createQVBoxLayout();
+    layout->addWidget(color_picker_widget_);
+    layout->addWidget(brushes_menu_);
+    left_panel->setLayout(layout);
+    return left_panel;
 }
 
-QHBoxLayout* SpritesEditorWindow::createQHBoxLayout() {
-    QHBoxLayout* layout = new QHBoxLayout;
-    layout->setMargin(0);
-    layout->setSpacing(0);
-    return layout;
+QGroupBox* SpritesEditorWindow::createMiddlePanel() {
+    QGroupBox* middle_panel = new QGroupBox();
+    CustomLayouts::setupSizePolicyHorizontal(middle_panel, 3);
+    QVBoxLayout *layout = CustomLayouts::createQVBoxLayout();
+    layout->addWidget(scroll_area_);
+    middle_panel->setLayout(layout);
+    return middle_panel;
+}
+
+QGroupBox* SpritesEditorWindow::createRightPanel() {
+    QGroupBox* right_panel = new QGroupBox();
+    CustomLayouts::setupSizePolicyHorizontal(right_panel, 1);
+    QVBoxLayout *layout = CustomLayouts::createQVBoxLayout();
+    layout->addWidget(new QWidget(this));
+    right_panel->setLayout(layout);
+    return right_panel;
 }

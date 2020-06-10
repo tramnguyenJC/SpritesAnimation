@@ -1,10 +1,13 @@
 #include "sprites_editor_menubar.h"
-#include "brushes/brush.h"
+
+#include "brushes/brush_collection.h"
 
 #include <QActionGroup>
 #include <QApplication>
 #include <QMessageBox>
 #include <QPointer>
+#include <QDebug>
+
 
 SpritesEditorMenuBar::SpritesEditorMenuBar(
         QWidget* parent, SpritesEditorMenuBarController* menu_bar_controller)
@@ -17,9 +20,7 @@ void SpritesEditorMenuBar::initialize() {
     createActions();
     createMenus();
     loadBrushes();
-    if (!brush_action_group_->actions().isEmpty()) {
-        brush_action_group_->actions().at(0)->trigger();
-    }
+    triggerDefaultBrush();
 }
 
 SpritesEditorMenuBar::~SpritesEditorMenuBar() {
@@ -140,26 +141,32 @@ void SpritesEditorMenuBar::createHelpMenu() {
 
 void SpritesEditorMenuBar::loadBrushes()
 {
-    const QStringList brushes =  Brush::getBrushNames();
-    for (const QString& brush_name : brushes) {
-        loadBrush(brush_name);
+    auto brush_collection = BrushCollection::getBrushCollection();
+    for (const auto& key : brush_collection.keys()) {
+        Brush* brush = brush_collection[key];
+        loadBrush(brush);
     }
     if (brush_action_group_) {
         brush_menu_->setEnabled(!brush_action_group_->actions().isEmpty());
     }
-//    shapes_menu_->setEnabled(!shapes_menu_->actions().isEmpty());
-//    filter_menu_->setEnabled(!filter_menu_->actions().isEmpty());
 }
 
-void SpritesEditorMenuBar::loadBrush(QString brush_name) {
-    QPointer<Brush> brush = Brush::create(brush_name);
+void SpritesEditorMenuBar::loadBrush(Brush* brush) {
 
-    auto action = new QAction(brush_name, brush);
+    auto action = new QAction(brush->brushName(), brush);
     connect(action, &QAction::triggered, menu_bar_controller_,
             &SpritesEditorMenuBarController::changeBrush);
     brush_menu_->addAction(action);
     if (brush_action_group_) {
         action->setCheckable(true);
         brush_action_group_->addAction(action);
+    }
+}
+
+void SpritesEditorMenuBar::triggerDefaultBrush() {
+    for (auto action : brush_action_group_->actions()) {
+        if (action->text() == BrushCollection::DEFAULT_BRUSH_NAME) {
+            action->trigger();
+        }
     }
 }

@@ -34,8 +34,24 @@ QToolButton::menu-button
     outline: none;
 }
 
-QToolButton::menu-arrow:open
+QListView
 {
-    border: 0.1ex solid #BAB9B8;
+    border: 0.1ex solid #76797c;
 }
+
+QListView::item
+{
+    padding: 0.3ex;
+}
+
+QTableView::item:!selected:hover,
+QListView::item:!selected:hover,
+QTreeView::item:!selected:hover
+{
+    background-color: rgba(61, 173, 232, 0.2);
+    outline: 0;
+    color: black;
+    padding: 0.3ex;
+}
+
 

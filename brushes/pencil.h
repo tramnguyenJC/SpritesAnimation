@@ -21,6 +21,7 @@ public:
                             const QPoint &newPos) override;
     QRect mouseRelease(QPainter &painter, const QPoint &pos) override;
 private:
+    void setupPainter(QPainter& painter);
 };
 
 #endif // PENCIL_H
