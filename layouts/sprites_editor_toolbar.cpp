@@ -1,6 +1,6 @@
 #include "sprites_editor_toolbar.h"
 
-#include <QToolButton>
+#include <QDebug>
 
 SpritesEditorToolbar::SpritesEditorToolbar(
         QWidget* parent, SpritesEditorToolbarController* toolbar_controller)
@@ -8,18 +8,30 @@ SpritesEditorToolbar::SpritesEditorToolbar(
      toolbar_controller_(toolbar_controller)
 {
     this->setAllowedAreas(Qt::NoToolBarArea);
-    const QIcon newIcon = QIcon::fromTheme("document-new",
-                                           QIcon(":/images/icons/brush.png"));
+    addBrushButton();
+}
+
+QToolButton* SpritesEditorToolbar::createButton(const QIcon& icon,
+                                                const QString& button_name) {
     QToolButton *button = new QToolButton;
-    button->setIcon(newIcon);
-    button->setToolTip("Brush");
-    button->setFixedSize(40, 40);
-    button->setIconSize(QSize(40, 40));
-//    button->setShortcut(QKeySequence(Qt::Key_Tab));
-    this->addWidget(button);
-    connect(button, &QToolButton::clicked, this, &SpritesEditorToolbar::brush);
+    button->setIcon(icon);
+    button->setToolTip(button_name);
+    button->setFixedSize(BUTTON_SIZE, BUTTON_SIZE);
+    button->setIconSize(QSize(BUTTON_SIZE, BUTTON_SIZE));
+    return button;
+}
+
+void SpritesEditorToolbar::addBrushButton() {
+    const QIcon brush_icon = QIcon::fromTheme("brush",
+                                           QIcon(":/images/icons/brush.png"));
+    auto brush_button = createButton(brush_icon, tr("Brush"));
+    connect(brush_button, &QToolButton::clicked, this,
+            &SpritesEditorToolbar::brush);
+    // button->setShortcut(QKeySequence(Qt::Key_Tab));
+    this->addWidget(brush_button);
 }
 
 void SpritesEditorToolbar::brush() {
-
+    qInfo() << "clicked";
 }
+

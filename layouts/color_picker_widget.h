@@ -5,6 +5,7 @@
 #include <QGroupBox>
 #include <QVBoxLayout>
 
+#include "custom_layouts.h"
 #include "components/custom_color_dialog.h"
 #include "controllers/color_picker_widget_controller.h"
 
@@ -18,7 +19,7 @@ private slots:
     void changeCurrentColor(const QColor& color);
 
 private:
-    static constexpr int COLOR_LABEL_WIDTH = 100;
+    static constexpr int COLOR_LABEL_WIDTH = 90;
     static constexpr int COLOR_LABEL_HEIGHT = 20;
     ColorPickerWidgetController* color_picker_controller_;
     QLabel* color_label_ = nullptr;

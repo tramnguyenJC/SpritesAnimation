@@ -9,6 +9,7 @@ class ColorPickerWidgetController : public QObject {
 public:
     ColorPickerWidgetController(QWidget* parent, PaintArea* paint_area);
     void changeBrushColor(const QColor& new_color);
+
 private:
     PaintArea* paint_area_ = nullptr;
 };

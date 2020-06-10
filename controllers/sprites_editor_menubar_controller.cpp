@@ -54,9 +54,9 @@ void SpritesEditorMenuBarController::applyStylesheet(const QString path) {
 void SpritesEditorMenuBarController::brushColor()
 {
     const QColor newColor = QColorDialog::getColor(
-                window_controller_->getPaintArea()->brushColor());
+                window_controller_->getPaintArea()->getBrush()->brushColor());
     if (newColor.isValid())
-        window_controller_->getPaintArea()->setBrushColor(newColor);
+        window_controller_->getPaintArea()->getBrush()->setBrushColor(newColor);
 }
 
 void SpritesEditorMenuBarController::brushWidth()
@@ -64,42 +64,18 @@ void SpritesEditorMenuBarController::brushWidth()
     bool ok;
     const int newWidth = QInputDialog::getInt(
                 parent_, tr("Plug & Paint"), tr("Select brush width:"),
-                window_controller_->getPaintArea()->brushWidth(),
+                window_controller_->getPaintArea()->getBrush()->brushWidth(),
                 1, 50, 1, &ok);
     if (ok)
-        window_controller_->getPaintArea()->setBrushWidth(newWidth);
+        window_controller_->getPaintArea()->getBrush()->setBrushWidth(newWidth);
 }
 
 void SpritesEditorMenuBarController::changeBrush()
 {
     auto action = qobject_cast<QAction *>(sender());
-    auto iBrush = qobject_cast<Brush *>(action->parent());
-    const QString brush = action->text();
-
-    window_controller_->getPaintArea()->setBrush(iBrush, brush);
+    auto brush = qobject_cast<Brush *>(action->parent());
+    window_controller_->getPaintArea()->setBrush(brush);
 }
-
-//void SpritesEditorMenuBarController::insertShape()
-//{
-//    auto action = qobject_cast<QAction *>(sender());
-//    auto iShape = qobject_cast<ShapeInterface *>(action->parent());
-
-//    const QPainterPath path = iShape->generateShape(action->text(), this);
-//    if (!path.isEmpty())
-//        window_controller_->getPaintArea()->insertShape(path);
-//}
-
-
-//void SpritesEditorMenuBarControllerapplyFilter()
-//{
-//    auto action = qobject_cast<QAction *>(sender());
-//    auto iFilter = qobject_cast<FilterInterface *>(action->parent());
-
-//    const QImage image = iFilter->filterImage(action->text(), window_controller_->getPaintArea()->image(),
-//                                              this);
-//    window_controller_->getPaintArea()->setImage(image);
-//}
-
 
 void SpritesEditorMenuBarController::about()
 {

@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "components/paint_area.h"
+#include "layouts/custom_layouts.h"
 
 class SpritesEditorWindowController : public QObject {
     Q_OBJECT

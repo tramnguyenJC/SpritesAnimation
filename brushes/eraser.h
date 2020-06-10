@@ -1,5 +1,5 @@
-#ifndef PENCIL_H
-#define PENCIL_H
+#ifndef ERASER_H
+#define ERASER_H
 
 #include "brush.h"
 
@@ -10,18 +10,17 @@
 
 class QString;
 
-class Pencil : public Brush {
+class Eraser : public Brush {
     Q_OBJECT
 public:
-    Pencil(const QString& brush_name);
-    virtual ~Pencil() {}
+    Eraser(const QString& brush_name);
+    virtual ~Eraser() {}
 
     QRect mousePress(QPainter &painter, const QPoint &pos) override;
     QRect mouseMove(QPainter &painter, const QPoint &oldPos,
                             const QPoint &newPos) override;
     QRect mouseRelease(QPainter &painter, const QPoint &pos) override;
 private:
-    void setupPainter(QPainter& painter);
+    void setupPainter(QPainter &painter);
 };
-
-#endif // PENCIL_H
+#endif // ERASER_H

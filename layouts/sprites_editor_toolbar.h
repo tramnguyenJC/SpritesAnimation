@@ -1,8 +1,8 @@
 #ifndef SPRITES_EDITOR_TOOLBAR_H
 #define SPRITES_EDITOR_TOOLBAR_H
 
-#include <QButtonGroup>
 #include <QToolBar>
+#include <QToolButton>
 
 #include "brushes/brush.h"
 #include "controllers/sprites_editor_toolbar_controller.h"
@@ -17,9 +17,11 @@ private slots:
     void brush();
 
 private:
-    QButtonGroup* button_group_;
+    static constexpr int BUTTON_SIZE = 40;
     SpritesEditorToolbarController* toolbar_controller_;
 
+    QToolButton* createButton(const QIcon& icon, const QString& button_name);
+    void addBrushButton();
 };
 
 #endif // SPRITES_EDITOR_TOOLBAR_H

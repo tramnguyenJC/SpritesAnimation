@@ -16,8 +16,6 @@ public slots:
     void brushColor();
     void brushWidth();
     void changeBrush();
-//    void insertShape();
-//    void applyFilter();
     void about();
     void applyStylesheet(const QString path);
 

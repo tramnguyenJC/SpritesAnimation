@@ -1,13 +1,15 @@
-#include "pencil.h"
+#include "eraser.h"
 
-Pencil::Pencil(const QString& brush_name) : Brush(brush_name) {}
+#include "components/paint_area.h"
 
-QRect Pencil::mousePress(QPainter &painter,const QPoint &pos)
+Eraser::Eraser(const QString& brush_name) : Brush(brush_name) {}
+
+QRect Eraser::mousePress(QPainter &painter,const QPoint &pos)
 {
     return mouseMove(painter, pos, pos);
 }
 
-QRect Pencil::mouseMove(QPainter &painter, const QPoint &oldPos,
+QRect Eraser::mouseMove(QPainter &painter, const QPoint &oldPos,
                         const QPoint &newPos)
 {
     setupPainter(painter);
@@ -19,15 +21,17 @@ QRect Pencil::mouseMove(QPainter &painter, const QPoint &oldPos,
     return boundingRect;
 }
 
-QRect Pencil::mouseRelease(QPainter & /* painter */,
+QRect Eraser::mouseRelease(QPainter & /* painter */,
                                      const QPoint & /* pos */)
 {
     return QRect(0, 0, 0, 0);
 }
 
-void Pencil::setupPainter(QPainter &painter) {
+void Eraser::setupPainter(QPainter &painter) {
     painter.setRenderHint(QPainter::Antialiasing, true);
-    painter.setPen(QPen(brush_color_, brush_width_, Qt::SolidLine, Qt::RoundCap,
+    painter.setCompositionMode(QPainter::CompositionMode_Clear);
+    QColor eraser_color(brush_color_);
+    painter.setPen(QPen(eraser_color, brush_width_, Qt::SolidLine, Qt::RoundCap,
                    Qt::RoundJoin));
     painter.save();
 }
